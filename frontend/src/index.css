@@ -1,0 +1,114 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+@import 'leaflet/dist/leaflet.css';
+
+@layer base {
+  html {
+    font-family: 'Inter', system-ui, sans-serif;
+  }
+  
+  body {
+    @apply bg-gray-100 text-black antialiased;
+  }
+  
+  /* Fix any layout issues with flexbox */
+  *, *::before, *::after {
+    box-sizing: border-box;
+  }
+}
+
+@layer components {
+  .sidebar-item {
+    @apply flex items-center px-4 py-3 text-black rounded-lg hover:bg-gray-200 hover:text-black transition-colors duration-200;
+  }
+  
+  .sidebar-item.active {
+    @apply bg-primary-100 text-primary-700 border-r-2 border-primary-500;
+  }
+  
+  .dashboard-card {
+    @apply bg-gray-200 rounded-lg shadow-card hover:shadow-card-hover transition-shadow duration-200 p-6;
+  }
+  
+  .btn-primary {
+    @apply bg-primary-600 hover:bg-primary-700 text-white font-medium py-2 px-4 rounded-lg transition-colors duration-200;
+  }
+  
+  .btn-secondary {
+    @apply bg-gray-200 hover:bg-gray-300 text-black font-medium py-2 px-4 rounded-lg transition-colors duration-200;
+  }
+  
+  .chart-container {
+    @apply bg-gray-200 rounded-lg shadow-card p-6 h-full;
+  }
+
+  /* Layout utilities */
+  .layout-container {
+    @apply min-h-screen flex;
+  }
+  
+  .sidebar-container {
+    @apply flex-shrink-0;
+  }
+  
+  .main-content-container {
+    @apply flex-1 flex flex-col min-w-0;
+  }
+}
+
+/* Custom scrollbar styles */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #e5e7eb;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}
+
+/* Animation classes */
+.fade-in {
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.slide-in {
+  animation: slideIn 0.3s ease-out;
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateX(-100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+/* Loading spinner */
+  .spinner {
+    @apply w-8 h-8 border-4 border-gray-300 border-t-primary-600 rounded-full animate-spin;
+  }
+
+ 
